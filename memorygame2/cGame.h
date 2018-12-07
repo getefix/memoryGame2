@@ -77,9 +77,9 @@ private:
 	vector<LPCSTR> btnTexturesToUse;
 	vector<SDL_Point> btnPos;
 	vector <cButton> theButtons;
-	btnTypes theBtnType;
+	//btnTypes theBtnType;
 	SDL_Point theAreaClicked;
-	 
+	
 
 	cTexture* tempTextTexture;
 

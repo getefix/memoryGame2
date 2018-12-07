@@ -90,8 +90,9 @@ void cGame::initialise(SDL_Window* theSDLWND, SDL_Renderer* theRenderer)
 
 
 	// Creating buttons
-	btnNameList = { "exit_btn", "instructions_btn", "load_btn", "menu_btn", "play_btn", "save_btn", "settings_btn" };
-	btnTexturesToUse = { "Images/Buttons/button_exit.png", "Images/Buttons/button_instructions.png", "Images/Buttons/button_load.png", "Images/Buttons/button_menu.png", "Images/Buttons/button_play.png", "Images/Buttons/button_save.png", "Images/Buttons/button_settings.png" };
+	// exit, play, clear, submit, menu
+	btnNameList = { "exit_btn", "play_btn", "clear_btn", "submit_btn", "menu_btn" };
+	btnTexturesToUse = { "Images/Buttons/button_exit.png", "Images/Buttons/button_play.png", "Images/Buttons/button_load.png", "Images/Buttons/button_settings.png", "Images/Buttons/button_menu.png" };
 	btnPos = { { 400, 375 },{ 400, 300 },{ 400, 300 },{ 500, 500 },{ 400, 300 },{ 740, 500 },{ 400, 300 } };
 	for (unsigned int bCount = 0; bCount < btnNameList.size(); bCount++)
 	{
@@ -106,7 +107,7 @@ void cGame::initialise(SDL_Window* theSDLWND, SDL_Renderer* theRenderer)
 		theButtonMgr->add(btnNameList[bCount], newBtn);
 	}
 	theGameState = gameState::menu;
-	theBtnType = btnTypes::exit;
+	//theBtnType = btnTypes::exit;
 
 
 	// Create textures for Game Dialogue (text)
@@ -156,8 +157,7 @@ void cGame::render(SDL_Window* theSDLWND, SDL_Renderer* theRenderer)
 	switch (theGameState)
 	{
 	case gameState::menu:
-	{
-		
+	
 		spriteBkgd.setTexture(theTextureMgr->getTexture("OpeningScreen"));
 		spriteBkgd.render(theRenderer, NULL, NULL, spriteBkgd.getSpriteScale());
 		// Render the Title
@@ -175,37 +175,30 @@ void cGame::render(SDL_Window* theSDLWND, SDL_Renderer* theRenderer)
 		theButtonMgr->getBtn("play_btn")->render(theRenderer, &theButtonMgr->getBtn("play_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("play_btn")->getSpritePos(), theButtonMgr->getBtn("play_btn")->getSpriteScale());
 		theButtonMgr->getBtn("exit_btn")->setSpritePos({ 400, 375 });
 		theButtonMgr->getBtn("exit_btn")->render(theRenderer, &theButtonMgr->getBtn("exit_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("exit_btn")->getSpritePos(), theButtonMgr->getBtn("exit_btn")->getSpriteScale());
-		
-	}
+	
+	
 	break;
 	case gameState::memorise:
-	{
+	
+		spriteBkgd.setTexture(theTextureMgr->getTexture("OpeningScreen"));
 		spriteBkgd.render(theRenderer, NULL, NULL, spriteBkgd.getSpriteScale());
 		theTileMap.render(theSDLWND, theRenderer, theTextureMgr, textureName);
 
-		/*
-		spriteBkgd.setTexture(theTextureMgr->getTexture("theBackground"));
-		spriteBkgd.render(theRenderer, NULL, NULL, spriteBkgd.getSpriteScale());
-		tempTextTexture = theTextureMgr->getTexture("TitleTxt");
-		pos = { 10, 10, tempTextTexture->getTextureRect().w, tempTextTexture->getTextureRect().h };
-		tempTextTexture->renderTexture(theRenderer, tempTextTexture->getTexture(), &tempTextTexture->getTextureRect(), &pos, scale);
-		theTextureMgr->addTexture("BottleCount", theFontMgr->getFont("pirate")->createTextTexture(theRenderer, strScore.c_str(), textType::solid, { 44, 203, 112, 255 }, { 0, 0, 0, 0 }));
-		tempTextTexture = theTextureMgr->getTexture("BottleCount");
-		pos = { 600, 10, tempTextTexture->getTextureRect().w, tempTextTexture->getTextureRect().h };
-		tempTextTexture->renderTexture(theRenderer, tempTextTexture->getTexture(), &tempTextTexture->getTextureRect(), &pos, scale);
-		theTileMap.render(theSDLWND, theRenderer, theTextureMgr, textureName);
-		theTileMap.renderGridLines(theRenderer, aRect, aColour);
-		theButtonMgr->getBtn("exit_btn")->setSpritePos({ 850, 600 });
-		theButtonMgr->getBtn("exit_btn")->render(theRenderer, &theButtonMgr->getBtn("exit_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("exit_btn")->getSpritePos(), theButtonMgr->getBtn("exit_btn")->getSpriteScale());
-		*/
-	}
+		theButtonMgr->getBtn("clear_btn")->setSpritePos({ WINDOW_WIDTH-100, 600 });
+		theButtonMgr->getBtn("clear_btn")->render(theRenderer, &theButtonMgr->getBtn("clear_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("clear_btn")->getSpritePos(), theButtonMgr->getBtn("clear_btn")->getSpriteScale());
+		
+	
 	break;
-	case gameState::play:
-	{
-		//TODO put this somewhere better
+	case gameState::hide:
+	
+		// Clearing the tiles
 		theTileMap.clear();
+		theGameState = gameState::play;
+	
+	break;
+	case gameState::play:	
 
-
+		spriteBkgd.setTexture(theTextureMgr->getTexture("OpeningScreen"));
 		spriteBkgd.render(theRenderer, NULL, NULL, spriteBkgd.getSpriteScale());
 		theTileMap.render(theSDLWND, theRenderer, theTextureMgr, textureName);
 		theTreePicker.render(theSDLWND, theRenderer, theTextureMgr, textureName);
@@ -213,10 +206,15 @@ void cGame::render(SDL_Window* theSDLWND, SDL_Renderer* theRenderer)
 		{
 			dragTile.render(theRenderer, &dragTile.getSpriteDimensions(), &dragTile.getSpritePos(), spriteBkgd.getSpriteScale());
 		}
-	}
+
+		theButtonMgr->getBtn("submit_btn")->setSpritePos({ 850, 600 });
+		theButtonMgr->getBtn("submit_btn")->render(theRenderer, &theButtonMgr->getBtn("submit_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("submit_btn")->getSpritePos(), theButtonMgr->getBtn("submit_btn")->getSpriteScale());
+
+	
 	break;
 	case gameState::score:
-	{
+	
+		cout << "score";
 		/*
 		spriteBkgd.setTexture(theTextureMgr->getTexture("ClosingScreen"));
 		spriteBkgd.render(theRenderer, NULL, NULL, spriteBkgd.getSpriteScale());
@@ -234,21 +232,23 @@ void cGame::render(SDL_Window* theSDLWND, SDL_Renderer* theRenderer)
 		theButtonMgr->getBtn("exit_btn")->setSpritePos({ 500, 575 });
 		theButtonMgr->getBtn("exit_btn")->render(theRenderer, &theButtonMgr->getBtn("exit_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("exit_btn")->getSpritePos(), theButtonMgr->getBtn("exit_btn")->getSpriteScale());
 		*/
-	}
+
+		theButtonMgr->getBtn("menu_btn")->setSpritePos({ 350, 600 });
+		theButtonMgr->getBtn("menu_btn")->render(theRenderer, &theButtonMgr->getBtn("menu_btn")->getSpriteDimensions(), &theButtonMgr->getBtn("menu_btn")->getSpritePos(), theButtonMgr->getBtn("menu_btn")->getSpriteScale());
+
 	break;
 	case gameState::quit:
-	{
-		
+	
 		loop = false;
 		
-	}
+	
 	break;
 	default:
 		break;
 	}
 
 
-
+	
 
 
 
@@ -276,17 +276,40 @@ void cGame::update()
 
 void cGame::update(double deltaTime)
 {
-	// Check Button clicked and change state
-	if (theGameState == gameState::menu || theGameState == gameState::quit)
+	
+	switch (theGameState)
 	{
+	case gameState::menu:
+	
+		theGameState = theButtonMgr->getBtn("play_btn")->update(theGameState, gameState::memorise, theAreaClicked);
 		theGameState = theButtonMgr->getBtn("exit_btn")->update(theGameState, gameState::quit, theAreaClicked);
+	
+	break;
+	case gameState::memorise:
+	
+		theGameState = theButtonMgr->getBtn("clear_btn")->update(theGameState, gameState::hide, theAreaClicked);
+	
+	break;
+	case gameState::hide:
+	
+		
+	
+	break;
+	case gameState::play: 
+		theGameState = theButtonMgr->getBtn("submit_btn")->update(theGameState, gameState::score, theAreaClicked);
+	
+	break;
+	case gameState::score:
+	
+		theGameState = theButtonMgr->getBtn("menu_btn")->update(theGameState, gameState::menu, theAreaClicked);
+	
+	break;
+	default:
+		break;
 	}
-	else
-	{
-		theGameState = theButtonMgr->getBtn("exit_btn")->update(theGameState, gameState::quit, theAreaClicked);
-	}
-	theGameState = theButtonMgr->getBtn("play_btn")->update(theGameState, gameState::play, theAreaClicked);
-	theGameState = theButtonMgr->getBtn("menu_btn")->update(theGameState, gameState::menu, theAreaClicked);
+
+
+
 
 }
 
