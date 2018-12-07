@@ -76,7 +76,25 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo copying SDL2.dll to debug directory
+xcopy /Y "$(ProjectDir)Images\*.*" "$(OutDir)Images\"
+xcopy /Y "$(ProjectDir)Fonts\*.*" "$(OutDir)Fonts\"
+xcopy /Y "$(ProjectDir)Audio\*.*" "$(OutDir)Audio\"
+xcopy /Y "$(ProjectDir)Data\*.*" "$(OutDir)Data\"
+xcopy /Y "SDL2\SDL2-2.0.4\lib\x86\SDL2.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_image-2.0.1\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_ttf-2.0.14\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_mixer-2.0.1\lib\x86\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -84,7 +102,25 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo copying SDL2.dll to debug directory
+xcopy /Y "$(ProjectDir)Images\*.*" "$(OutDir)Images\"
+xcopy /Y "$(ProjectDir)Fonts\*.*" "$(OutDir)Fonts\"
+xcopy /Y "$(ProjectDir)Audio\*.*" "$(OutDir)Audio\"
+xcopy /Y "$(ProjectDir)Data\*.*" "$(OutDir)Data\"
+xcopy /Y "SDL2\SDL2-2.0.4\lib\x86\SDL2.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_image-2.0.1\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_ttf-2.0.14\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_mixer-2.0.1\lib\x86\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,11 +130,27 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>echo copying SDL2.dll to debug directory
+xcopy /Y "$(ProjectDir)Images\*.*" "$(OutDir)Images\"
+xcopy /Y "$(ProjectDir)Fonts\*.*" "$(OutDir)Fonts\"
+xcopy /Y "$(ProjectDir)Audio\*.*" "$(OutDir)Audio\"
+xcopy /Y "$(ProjectDir)Data\*.*" "$(OutDir)Data\"
+xcopy /Y "SDL2\SDL2-2.0.4\lib\x86\SDL2.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_image-2.0.1\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_ttf-2.0.14\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_mixer-2.0.1\lib\x86\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -108,13 +160,62 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\include;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_ttf-2.0.14\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_mixer-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2_image-2.0.1\lib\x86;C:\Users\wnouwe200\source\repos\memorygame2\memorygame2\SDL2\SDL2-2.0.4\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>echo copying SDL2.dll to debug directory
+xcopy /Y "$(ProjectDir)Images\*.*" "$(OutDir)Images\"
+xcopy /Y "$(ProjectDir)Fonts\*.*" "$(OutDir)Fonts\"
+xcopy /Y "$(ProjectDir)Audio\*.*" "$(OutDir)Audio\"
+xcopy /Y "$(ProjectDir)Data\*.*" "$(OutDir)Data\"
+xcopy /Y "SDL2\SDL2-2.0.4\lib\x86\SDL2.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_image-2.0.1\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_ttf-2.0.14\lib\x86\*.dll" "$(OutDir)"
+xcopy /Y "SDL2\SDL2_mixer-2.0.1\lib\x86\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cBkGround.cpp" />
+    <ClCompile Include="cButton.cpp" />
+    <ClCompile Include="cButtonMgr.cpp" />
+    <ClCompile Include="cFont.cpp" />
+    <ClCompile Include="cFontMgr.cpp" />
+    <ClCompile Include="cGameStuVer.cpp" />
+    <ClCompile Include="cSDL2WNDManager.cpp" />
+    <ClCompile Include="cSound.cpp" />
+    <ClCompile Include="cSoundMgr.cpp" />
+    <ClCompile Include="cSprite.cpp" />
+    <ClCompile Include="cTexture.cpp" />
+    <ClCompile Include="cTextureMgr.cpp" />
+    <ClCompile Include="cTileMapStuVer.cpp" />
+    <ClCompile Include="cTreePicker.cpp" />
+    <ClCompile Include="TreePlanterSDL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cBkGround.h" />
+    <ClInclude Include="cButton.h" />
+    <ClInclude Include="cButtonMgr.h" />
+    <ClInclude Include="cFont.h" />
+    <ClInclude Include="cFontMgr.h" />
+    <ClInclude Include="cGame.h" />
+    <ClInclude Include="cSDL2WNDManager.h" />
+    <ClInclude Include="cSound.h" />
+    <ClInclude Include="cSoundMgr.h" />
+    <ClInclude Include="cSprite.h" />
+    <ClInclude Include="cTexture.h" />
+    <ClInclude Include="cTextureMgr.h" />
+    <ClInclude Include="cTileMap.h" />
+    <ClInclude Include="cTreePicker.h" />
+    <ClInclude Include="GameConstants.h" />
+    <ClInclude Include="treeplanterGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
