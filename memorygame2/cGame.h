@@ -79,7 +79,7 @@ private:
 	vector <cButton> theButtons;
 	btnTypes theBtnType;
 	SDL_Point theAreaClicked;
-
+	 
 
 	cTexture* tempTextTexture;
 
